@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Scanner;
 
+import dao.AlumnoDAO;
+import dao.AlumnoDAOImpl;
 import dto.AlumnoDTO;
 import dto.RegistroConAlumnoDTO;
 //import dto.RegistroDTO;
@@ -16,23 +18,24 @@ public class AppEvaluavionDiaria {
     public static void main(String[] args) {
         Connection con = JbdcUtil.getConnection();
         JbdcUtil.executeUpdate("BD/datosPruebas.sql", con);
+        AlumnoDAO alumnoDAO = new AlumnoDAOImpl(con);
 
         Scanner sc = new Scanner(System.in);
 
         System.out.println("----------MENÚ----------");
-        System.out.println("1. Listar Alumnos");
-        System.out.println("2. Sortear entre todos los alumnos");
-        System.out.println("3. Sortear alumnos sin registro de ejercicios");
-        System.out.println("4. Listar registros ejercicios");
+        System.out.println("1. Listar Alumnado");
+        System.out.println("2. Sortear entre todo el alumnado");
+        System.out.println("3. Sortear entre alumnado sin registros");
+        System.out.println("4. Listar registros");
         System.out.println("5. Insertar registro ejercicio");
-        System.out.println("6. Listar alumno con sus registros y calificacion media");
+        System.out.println("6. Listar alumno/a con sus registros y calificacion media");
         System.out.println("7. Listar alumnado y calificacion media de cada un@");
         int menu = sc.nextInt();
 
          switch (menu) {
             case 1 -> {
-             //   List<AlumnoDTO> alumnos = listarTodos();
-             //   System.out.println(alumnos);
+             List<AlumnoDTO> alumnos = alumnoDAO.listarTodos();
+             alumnos.forEach(System.out::println);
             }
             case 2 -> {
               //  AlumnoDTO alumnoElegido = sortearAlumno();
