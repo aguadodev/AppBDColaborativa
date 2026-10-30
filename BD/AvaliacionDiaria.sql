@@ -12,5 +12,5 @@ CREATE TABLE IF NOT EXISTS registro_ejercicios (
     id_alumno INTEGER NOT NULL,
     puntuacion INTEGER CHECK (puntuacion BETWEEN 0 AND 5),
 
-    FOREIGN KEY id_alumno REFERENCES alumno(id)
+    FOREIGN KEY (id_alumno) REFERENCES alumno(id)
 );

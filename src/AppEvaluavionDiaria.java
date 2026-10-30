@@ -1,17 +1,22 @@
 
 
+import java.sql.Connection;
 import java.util.List;
 import java.util.Scanner;
 
 import dto.AlumnoDTO;
 import dto.RegistroConAlumnoDTO;
-import dto.RegistroDTO;
+//import dto.RegistroDTO;
+import util.JbdcUtil;
 
 
 
 public class AppEvaluavionDiaria {
 
     public static void main(String[] args) {
+        Connection con = JbdcUtil.getConnection();
+        JbdcUtil.executeUpdate("BD/datosPruebas.sql", con);
+
         Scanner sc = new Scanner(System.in);
 
         System.out.println("----------MENÚ----------");
@@ -26,34 +31,34 @@ public class AppEvaluavionDiaria {
 
          switch (menu) {
             case 1 -> {
-                List<AlumnoDTO> alumnos = listarTodos();
-                System.out.println(alumnos);
+             //   List<AlumnoDTO> alumnos = listarTodos();
+             //   System.out.println(alumnos);
             }
             case 2 -> {
-                AlumnoDTO alumnoElegido = sortearAlumno();
-                System.out.println(alumnoElegido);
+              //  AlumnoDTO alumnoElegido = sortearAlumno();
+             //   System.out.println(alumnoElegido);
             }
             case 3 -> {
-                AlumnoDTO alumnoSinRegistro = sortearSinRegistros();
-                System.out.println(alumnoSinRegistro);
+            //    AlumnoDTO alumnoSinRegistro = sortearSinRegistros();
+              //  System.out.println(alumnoSinRegistro);
             }
             case 4 -> {
-                List<RegistroConAlumnoDTO> registroConAlumno = listarConAlumno();
-                System.out.println(registroConAlumno);
+              //  List<RegistroConAlumnoDTO> registroConAlumno = listarConAlumno();
+             //   System.out.println(registroConAlumno);
             }
             case 5 -> {
-                if (insertar(RegistroDTO registro)) {
-                    System.out.println("Registro insertado Correctamente");
-                } else {
-                    System.out.println("Error al insertar el registro");
-                }
+             //   if (insertar(RegistroDTO registro)) {
+             //       System.out.println("Registro insertado Correctamente");
+              //  } else {
+              //      System.out.println("Error al insertar el registro");
+             //   }
                 
             }
             case 6 -> {
-                listarAlumnoConRegistrosYMedia();
+               // listarAlumnoConRegistrosYMedia();
             }
             case 7 -> {
-                listarAlumnadoYCalificacionDeCadaUno();
+               // listarAlumnadoYCalificacionDeCadaUno();
             }
 
             default -> System.out.println("Opcion no valida");
