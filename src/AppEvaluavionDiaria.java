@@ -1,11 +1,11 @@
-package ADAT.ud2.evaluacion_diaria;
+
 
 import java.util.List;
 import java.util.Scanner;
 
-import ADAT.ud2.evaluacion_diaria.dto.AlumnoDTO;
-import ADAT.ud2.evaluacion_diaria.dto.RegistroConAlumnoDTO;
-import ADAT.ud2.evaluacion_diaria.dto.RegistroDTO;
+import dto.AlumnoDTO;
+import dto.RegistroConAlumnoDTO;
+import dto.RegistroDTO;
 
 
 
