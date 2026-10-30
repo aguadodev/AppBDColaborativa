@@ -4,7 +4,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import adat.ud2.sqlLite.bdColaborativa.dto.AlumnoDTO;
+import dto.AlumnoDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,10 +15,10 @@ import java.sql.SQLException;
  * @author Ignacio MR
  * AlumnoDAOImplTran
  */
-public class AlumnoDAOImplTran implements AlumnoDAO {
+public class AlumnoDAOImpl implements AlumnoDAO {
     private Connection con;
 
-    public AlumnoDAOImplTran(Connection con) {
+    public AlumnoDAOImpl(Connection con) {
          this.con = con; 
     }
 

@@ -70,5 +70,13 @@ public class AlumnoDTO {
         }
         this.curso = curso;
     }
+
+    @Override
+    public String toString() {
+        return "AlumnoDTO [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", curso=" + curso + "]";
+    }
+
+
+    
     
 }
