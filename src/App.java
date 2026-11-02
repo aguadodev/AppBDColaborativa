@@ -13,11 +13,8 @@ public class App {
         colaboradores.add("Alejandro Araujo");
         colaboradores.add("Adrián Gómez");
         colaboradores.add("Hugo D.");
-<<<<<<< HEAD
         colaboradores.add("Adrian Santos");
-=======
         colaboradores.add("Adam");
->>>>>>> upstream/main
         // Seguir añadiendo colaboradores
 
         System.out.println("Colaborador@s:");
