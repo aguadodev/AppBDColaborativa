@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import dto.AlumnoConRegistroDTO;
 import dto.AlumnoDTO;
 
 /**
@@ -14,6 +15,7 @@ public interface AlumnoDAO {
     public boolean eliminar(int id);
     public AlumnoDTO buscarPorId(int id);
     public boolean actualizar(AlumnoDTO alumno);
+    public List<AlumnoConRegistroDTO> listarAlumnoConRegistrosYMedia();
 
     // Otros métodos
     public AlumnoDTO sortearAlumno();
