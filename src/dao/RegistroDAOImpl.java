@@ -6,11 +6,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import util.JbdcUtil;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import dto.RegistroConAlumnoDTO;
 import dto.RegistroDTO;
 
@@ -73,5 +71,30 @@ public class RegistroDAOImpl implements RegistroDAO {
         }
         return listaConAlumnos;
     }  
-    
+
+    /**@author Samuel */ 
+    @Override
+    public List<RegistroDTO> listarRegistros() {
+        List<RegistroDTO> registros = null;
+
+        String sql = """
+                select * from registro_ejercicios
+                """;
+
+        try (Statement sentencia = con.createStatement();
+                ResultSet rs = sentencia.executeQuery(sql);) {
+
+            registros = new ArrayList<>();
+            while (rs.next()) {
+                registros.add(new RegistroDTO(rs.getString("nombre"), rs.getDate("fecha").toLocalDate(),
+                        rs.getInt("id_alumno"), rs.getInt("puntuacion")));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error SQL: " + e.getMessage());
+        }
+
+        return registros;
+    }
+
 }
