@@ -174,7 +174,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
     }
 
     @Override
-    public List<AlumnoConRegistroDTO> listarAlumnoConRegistrosYMedia() {
+    public void listarAlumnoConRegistrosYMedia() {
 
         List<AlumnoConRegistroDTO> alumnos = new ArrayList<>();
         String sql = """
@@ -201,24 +201,32 @@ public class AlumnoDAOImpl implements AlumnoDAO {
                 ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
+                LocalDate fecha;
+                if (rs.getDate("fecha") != null) {
+                    fecha = rs.getDate("fecha").toLocalDate();
+                } else {
+                    fecha = null;
+                }
+
                 alumnos.add(new AlumnoConRegistroDTO(
                         rs.getInt("id"),
                         rs.getString("nombre"),
                         rs.getString("apellidos"),
                         rs.getString("curso"),
                         rs.getString("ejercicio"),
-                        rs.getDate("fecha").toLocalDate(),
+                        fecha,
                         rs.getDouble("puntuacion"),
                         rs.getDouble("media")));
-            }
 
-            Collections.shuffle(alumnos);
+            }
 
         } catch (SQLException e) {
             System.out.println("Error sql: " + e.getMessage());
         }
 
-        return alumnos;
+        for (AlumnoConRegistroDTO alumnoConRegistroDTO : alumnos) {
+            System.out.println(alumnoConRegistroDTO);
+        }
 
     }
 
